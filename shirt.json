@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "club": "Manchester City",
+        "stagione": "2020-21 home",
+        "giocatore": "senzanome",
+        "url": "immagini/mancity20_21.jpg",
+        "prezzo": 90
+    },
+    {
+        "id": 2,
+        "club": "Arsenal",
+        "stagione": "2020-21 home",
+        "giocatore": "senzanome",
+        "url": "immagini/arsenal20_21.jpg",
+        "prezzo": 90
+    },
+    {
+        "id": 3,
+        "club": "Liverpool",
+        "stagione": "2020-21 home",
+        "giocatore": "senzanome",
+        "url": "immagini/liverpool20_21.jpg",
+        "prezzo": 90
+    },
+    {
+        "id": 4,
+        "club": "Chelsea",
+        "stagione": "2022-23 home",
+        "giocatore": "senzanome",
+        "url": "immagini/chelsea22_23.jpg",
+        "prezzo": 90
+    },
+    {
+        "id": 5,
+        "club": "Arsenal",
+        "stagione": "2019-20 home",
+        "giocatore": "Ozil",
+        "url": "immagini/arsenal19-20 ozil.jpg",
+        "prezzo": 120
+    },
+    {
+        "id": 6,
+        "club": "Chelsea",
+        "stagione": "2019-20 home",
+        "giocatore": "Giroud",
+        "url": "immagini/chelsea19-20 giroud.jpg",
+        "prezzo": 120
+    },
+    {
+        "id": 7,
+        "club": "Manchester City",
+        "stagione": "2019-20 home",
+        "giocatore": "DeBruyne",
+        "url": "immagini/mancity19-20 debruyne.jpg ",
+        "prezzo": 120
+    }
+]

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PremierShirt.co.uk</title>
+    <link rel="stylesheet" href="style_hp.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/x-icon" href="immagini/logo.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,300;0,400;0,600;0,700;1,100;1,300;1,400;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+
+<script>
+    let requestURL = 'shirt.json';
+    let request = new XMLHttpRequest();
+    request.open('GET', requestURL);
+    request.responseType = 'json';
+    request.send();
+    var indice = 0;
+
+    request.onload = function () {
+      if(!localStorage.getItem('carrello')) {
+        document.getElementById("carrello").innerHTML = "il carrello è vuoto";
+      } else {
+        const arrayString = localStorage.getItem('carrello');
+        const array = JSON.parse(arrayString);
+        const shirt = request.response;
+        var indice;
+        var returnC;
+        var totale = 0;
+
+        for (let i = 0; i < array.length; i++) {
+          indice = array[i];
+          returnC += '<img src="' + shirt[indice].url + '" width="400" height="400"> <br>';
+          returnC += shirt[indice].club + '<br>';
+          returnC += shirt[indice].stagione + '<br>';
+          returnC += shirt[indice].giocatore + '<br>';
+          returnC += shirt[indice].prezzo + '€<br>';
+          totale += shirt[indice].prezzo;
+        }
+          document.getElementById("carrello").innerHTML = returnC;
+          document.getElementById("totale").innerHTML = "Il tuo totale è di: " + totale + "€";
+      }
+    }
+
+    function removeFromCart() {
+      localStorage.clear();
+    }
+
+    function sendOrder() {
+      const emailInput = document.getElementById('email');
+      const email = emailInput.value;
+      var subject = "Ordine PremierShirt";
+      var body = "L'ordine contenente: \n \n"
+      if(!localStorage.getItem('carrello')) {
+        document.getElementById("carrello").innerHTML = "il carrello è vuoto";
+      } else {
+        const arrayString = localStorage.getItem('carrello');
+        const array = JSON.parse(arrayString);
+        const shirt = request.response;
+        var indice;
+        var totale = 0;
+
+        for (let i = 0; i < array.length; i++) {
+          indice = array[i];
+          body += "  " + shirt[indice].club + "\n";
+          body += "  " + shirt[indice].stagione + "\n";
+          body += "  " + shirt[indice].giocatore + "\n";
+          body += "  " + shirt[indice].prezzo + "€ \n \n";
+          totale += shirt[indice].prezzo;
+        }
+      }
+      body += "è andato a buon fine! \nil totale è di: " + totale + "€ \nGrazie per l'acquisto!";
+      if(!email) {
+
+      } else {
+        if(!localStorage.getItem('carrello')) {
+
+        } else {
+          const mailtoString = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          window.location.href = mailtoString;
+        }
+      }
+    }
+</script>
+
+<body>
+    <section class="header">
+        <nav>
+            <img src="immagini/logo.png" style="width:60px">
+            <div class="nav-links">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="prodotti.html">Prodotti</a></li>
+                    <li><a href="chisiamo.html">About us</a></li>
+                    <li><a href="carrello.html"><img src="immagini/carrello.png" style="width:35px"></a></li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+    <section>
+        <h1 style="padding-left: 20px;">Il tuo carrello </h1><br>
+        <div id="elenco" style="padding-left: 20px;"></div> <br>
+        <div class="responsive">
+            <div class="desc" style="text-align: left;" >
+              <p id="carrello"><p> <br>
+              <p id="totale"></p> <br> <br>
+              <button style="border: none; background-color: transparent; width: 50px;" onclick="removeFromCart()"><a href="carrello.html"> <img src="immagini/delete.png" alt="rimuovi dal carrello"style="width: 30px;"></a></button>
+              <button style="border: none; background-color: transparent; width: 50px;" onclick="sendOrder()"><a><img src="immagini/send.png" alt="invia_ordine" style="width: 30px;"></a></button>
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" placeholder="inserisci la tua email">
+              <img id="imgCart">
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

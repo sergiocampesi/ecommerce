@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PremierShirt.co.uk</title>
+    <link rel="stylesheet" href="style_hp.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/x-icon" href="immagini/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,300;0,400;0,600;0,700;1,100;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+
+<script>
+    let requestURL = 'shirt.json';
+    let request = new XMLHttpRequest();
+    request.open('GET', requestURL);
+    request.responseType = 'json';
+    request.send();
+    var url = document.location.search.substring(0);
+    var url1 = url.split("&")[0];
+    var indice = url1.substr(8);
+
+    request.onload = function () {
+        const shirt = request.response;
+        document.getElementById("img").innerHTML = '<img src="' + shirt[indice].url + '" width="600" height="400">';
+        document.getElementById("club").innerHTML = shirt[indice].club;
+        document.getElementById("stagione").innerHTML = shirt[indice].stagione;
+        document.getElementById("giocatore").innerHTML = shirt[indice].giocatore;
+        document.getElementById("prezzo").innerHTML = shirt[indice].prezzo + '€';
+        document.getElementById("bottone").innerHTML = '<button style="border: none; background-color: transparent; width: 50px;" onclick="addToCart(' + indice + ')"><a href="carrello.html"> <img src="immagini/add.jpg" alt="aggiungi al carrello"style="width: 30px;"></a></button>';
+    }
+
+    function addToCart(indice) {
+        if (!localStorage.getItem("carrello")) {
+            localStorage.setItem("carrello", "[]");
+        }
+        var array = JSON.parse(localStorage.getItem("carrello"));
+        array.push(indice);
+        localStorage.setItem("carrello", JSON.stringify(array));
+    }
+</script>
+
+<body>
+    <section class="header">
+        <nav>
+            <img src="immagini/logo.png" style="width:60px">
+            <div class="nav-links">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="prodotti.html">Prodotti</a></li>
+                    <li><a href="chisiamo.html">About us</a></li>
+                    <li><a href="carrello.html"><img src="immagini/carrello.png" style="width:35px"></a></li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+    <section>
+        <p style="font-size: 60px; padding-left: 20px;"></p> <br>
+        <div class="responsive">
+            <div class="gallery">
+                <div style="text-align: left;">
+                    <p id="img"></p>
+                    <p id="club"></p>
+                    <p id="stagione"></p>
+                    <p id="giocatore"></p>
+                    <p id="prezzo" style="font-size:35px; text-align: left;"></p>
+                    <p id="bottone"></p>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

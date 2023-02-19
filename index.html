@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PremierShirt.co.uk</title>
+    <link rel="stylesheet" href="style_hp.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/x-icon" href="immagini/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,300;0,400;0,600;0,700;1,100;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+
+<body>
+    <section class="header">
+        <nav>
+            <img src="immagini/logo.png" style="width:60px">
+            <div class="nav-links">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="prodotti.html">Prodotti</a></li>
+                    <li><a href="chisiamo.html">About us</a></li>
+                    <li><a href="carrello.html"><img src="immagini/carrello.png" style="width:35px"></a></li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+    <section>
+        <h1 style="padding-left: 20px; text-align: center;">I PRODOTTI QUASI SOLD OUT</h1><br>
+        
+        <br><br><br>
+
+        <div class="responsive">
+            <div class="gallery">
+                <img src="immagini/arsenal20_21.jpg" alt="Arsenal 2020-21" width="600" height="400">
+                <div class="desc">
+                    <form method="get" action="info_prodotto.html" name="num">
+                        <input type="hidden" name="numero" value="1">
+                        <input type="submit" value="Arsenal" class="bottone">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="responsive">
+            <div class="gallery">
+                <img src="immagini/mancity20_21.jpg" alt="Manchester City 2020-21" width="600" height="400"> <br><br>
+                <form method="get" action="info_prodotto.html" name="num" style="text-align: center;">
+                    <input type="hidden" name="numero" value="0">
+                    <input type="submit" value="Manchester City" class="bottone">
+                </form>
+            </div>
+        </div>
+
+        <div class="responsive">
+            <div class="gallery">
+                <img src="immagini/liverpool20_21.jpg" alt="Liverpool 2020-21" width="600" height="400">
+                <div class="desc">
+                    <form method="get" action="info_prodotto.html" name="num">
+                        <input type="hidden" name="numero" value="2">
+                        <input type="submit" value="Liverpool" class="bottone">
+                    </form>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>
